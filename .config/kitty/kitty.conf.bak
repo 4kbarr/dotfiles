@@ -1,0 +1,14 @@
+# Set the background to 70% opacity
+background_opacity 0.7
+
+# Enable background blur with a radius of 16 pixels
+background_blur 16
+
+# Dynamically change opacity based on background images
+dynamic_background_opacity yes
+
+# window padding and margin
+window_padding_width 15
+
+#font
+font_family JetBrainsMono
