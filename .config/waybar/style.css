@@ -1,14 +1,21 @@
 * {
     /* `otf-font-awesome` is required to be installed for icons */
-    font-family: "NotoSans";
+    font-family: "NotoSans","Font Awesome";
     font-size: 15px;
+    font-weight: bold;
 }
 
 window#waybar {
-    background-color: transparent;
-    color: #ffffff;
+  /* From https://css.glass */
+  background-color: rgba(255,255,255,.3);
+  box-shadow: 0 6px 6px rgba(0, 0, 0, 0.2), 0 0 20px rgba(0, 0, 0, 0.1);
+border-radius: 15px;
+/*backdrop-filter: blur(11.9px);*/
+border: 1px solid rgba(255, 255, 255, 0.5);
+    color: #fdfdfd;
     transition-property: background-color;
     transition-duration: .5s;
+    padding: 5px 0px;
 }
 
 window#waybar.hidden {
@@ -33,12 +40,8 @@ window#waybar.chromium {
     border: none;
 }
 
-button {
-    /* Use box-shadow instead of border so the text isn't offset */
-    box-shadow: inset 0 -3px transparent;
-    /* Avoid rounded borders under each button name */
-    border: none;
-    border-radius: 0;
+#workspaces button {
+
 }
 
 /* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
@@ -52,28 +55,53 @@ button:hover {
     background-color: #a37800;
 }
 
+#pulseaudio-slider {
+    padding: 0;
+    margin: 0;
+    background-color: transparent;
+}
+#pulseaudio-slider slider {
+    min-height: 0px;
+    min-width: 0px;
+    opacity: 0;
+    background: white;
+    box-shadow: none;
+    border: 1px solid white;
+}
+#pulseaudio-slider trough {
+    min-height: 10px;
+    min-width: 80px;
+    border-radius: 5px;
+    border-color: white;
+    background: rgba(0,0,0,0.2);
+}
+#pulseaudio-slider highlight {
+    min-width: 10px;
+    border-radius: 5px;
+    background: white;
+    border-color: white;
+}
+
 #workspaces button {
-    padding: 0 7px;
-    background-color: #fff;
-    color: #0d0d0d;
+    margin: 8px 4px;
+    padding: 0 10px;
+    background-color: rgba(255,255,255,0.3);
+    border: 1px solid #fff;
+    text-shadow: none;
+    color: #fff;
 }
 
 #workspaces button.active {
-    background-color: #bdbaba;
+    background-color: rgba(255,255,255,0.6);
+    box-shadow:0 2px 2px #666;
+    color:#333;
 
 }
 
 #workspaces button:hover {
-    background: #0069d4;
-}
-
-#workspaces button.focused {
-    background-color: #64727D;
-    box-shadow: inset 0 -3px #ffffff;
-}
-
-#workspaces button.urgent {
-    background-color: #eb4d4b;
+    background: rgba(255,255,255,.9);
+    text-decoration: none;
+    color:#333;
 }
 
 #mode {
@@ -99,12 +127,26 @@ button:hover {
 #power-profiles-daemon,
 #mpd {
     padding: 0 10px;
+    margin: 10px 0px;
     color: #ffffff;
+    border-radius: 7px;
+}
+
+#clock:hover,#cpu:hover,#network:hover,#memory:hover,#tray:hover{
+  background-color: rgba(0,0,0,0.20);
 }
 
 #window,
 #workspaces {
     margin: 0 4px;
+}
+
+.modules-right{
+  background-color: transparent;
+}
+
+.modules-right{
+  padding: 0px 15px;
 }
 
 /* If workspaces is the leftmost module, omit left margin */
@@ -114,11 +156,15 @@ button:hover {
 
 /* If workspaces is the rightmost module, omit right margin */
 .modules-right > widget:last-child > #workspaces {
-    margin-right: 0;
+    margin-right: 20px;
+
 }
 
 #clock {
-    background-color: #64727D;
+  /* 
+    background-color: rgba(255,255,255,0.23); */
+    color: #fff;
+    margin: 5px 0px;
 }
 
 #battery {
@@ -173,24 +219,18 @@ label:focus {
 }
 
 #cpu {
-    background-color: #2ecc71;
-    color: #000000;
 }
 
 #memory {
-    background-color: #9b59b6;
 }
 
 #disk {
-    background-color: #964B00;
 }
 
 #backlight {
-    background-color: #90b1b1;
 }
 
 #network {
-    background-color: #2980b9;
 }
 
 #network.disconnected {
@@ -198,8 +238,10 @@ label:focus {
 }
 
 #pulseaudio {
-    background-color: #f1c40f;
-    color: #000000;
+}
+
+#pulseaudio:hover{
+  background-color: rgba(0,0,0,0.20);
 }
 
 #pulseaudio.muted {
@@ -239,7 +281,6 @@ label:focus {
 }
 
 #tray {
-    background-color: #2980b9;
 }
 
 #tray > .passive {
@@ -248,7 +289,7 @@ label:focus {
 
 #tray > .needs-attention {
     -gtk-icon-effect: highlight;
-    background-color: #eb4d4b;
+    
 }
 
 #idle_inhibitor {
@@ -329,3 +370,6 @@ label:focus {
 #privacy-item.audio-out {
     background-color: #0069d4;
 }
+
+
+
